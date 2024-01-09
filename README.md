@@ -8,13 +8,13 @@ when using await in async function it wont go next process until that it doesn't
 <h3>Faced Challenges</h3>
 <p>It was challenging for me to achieve the transition effect while clicking the div(confirmed, recovered,active, death)
 tried out different way of approach. It forced me to make a lot of effort.</p>
-  
+
 <h3>Learned & Used</h3>
 <ul>
     <li>DOM manipulation for Nested element</li>
-    <li>Css properties to the core</li>
+    <li>"Carousel Effect" on Home page</li>
     <li>Bootstrap Responsive(mobile responsive)</li>
-    <li>Transition effects</li>
+    <li>Modal show</li>
     <li>Used iframe to play video in website</li>
   </ul>
 <h2>And my output will be with responsivnes</h2>
