@@ -1,0 +1,82 @@
+body{
+    background-color:rgba(231, 217, 192, 0.548)!important;
+}
+.navbar{
+    position: sticky;
+    z-index: 100;
+}
+#logo{
+   border-radius: 50%;
+   height: 80px;
+   width: 80px;
+   margin-left: 2px;
+}
+
+#navbarSupportedContent a{
+    color:black;
+    border-bottom: 2px solid transparent;
+    font-family: fantasy;
+}
+#navbarSupportedContent a:hover{
+    /* color:antiquewhite; */
+    border-bottom: 2px solid;
+}
+.home{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#about{
+    font-size: xx-large !important;
+    font-style: italic;
+    color: darkgreen;
+}
+.para{
+   font-family:cursive;
+    font-size: larger;
+    color: rgb(150, 43, 64);
+}
+.carousel-item img{
+    width: 100% !important;
+    border-radius: 50%;
+}
+section .food_area{
+    display: flex;
+    justify-content: space-between;
+}
+section{
+    width: 100%;
+    min-height: 80%;
+}
+#src_fd{
+width: 60vw;
+border-color: #190b0d;
+}
+#food_cousing{
+    display: none;
+}
+.modal-dialog {
+    max-width: 100vw!important;
+    margin-right: auto;
+    margin-left: auto;
+}
+.modal-content {
+    margin-left: 6px !important;
+    background-color: #190b0d !important;
+}
+.para p {
+        font-size: xx-large !important;
+        font-family: fantasy !important;
+    }
+.card{
+    border: 2px solid gray;
+    box-shadow: 10px 8px 20px 5px rgba(0, 0, 0, 0.5);
+}
+.card:hover{
+    border: 2px solid rgb(227, 225, 225);
+    box-shadow: 10px 8px 20px 5px rgba(230, 214, 214, 0.5);
+}
+/* .btn{
+    display: flex;
+    justify-content: center;
+} */
