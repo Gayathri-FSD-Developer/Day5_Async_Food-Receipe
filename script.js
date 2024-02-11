@@ -11,7 +11,7 @@
             var area_food= div.querySelector('#card-title');
             var titleValue = area_food.textContent;
             var row = document.getElementById('row_1');
-            // console.log(titleValue);
+         
             fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${titleValue}`)
             .then((response)=>{
                 return response.json();
