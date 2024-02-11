@@ -1,44 +1,36 @@
     var clickableDivs = document.querySelectorAll('.click');
     // console.log(clickableDivs);
 
-      // Iterate over the NodeList and attach a click event listener to each div(outer foreach)
-      // Onclicking the food area div do display the foods in specified area
-      clickableDivs.forEach(function(div) {
+      //(Outer foreach)Iterate over the NodeList and attach a click event listener to each div
+      // Onclicking the food Type div do display the cuisine of the specified country
+      clickableDivs.forEach((div)=> {
+        // console.log(div);
         div.addEventListener('click',()=>{
-           
+          //  console.log(div);
             // To access the innertext value of element
-            var area_food= document.getElementById('card-title');
+            var area_food= div.querySelector('#card-title');
             var titleValue = area_food.textContent;
-
-            // console.log("came");
+            var row = document.getElementById('row_1');
+            // console.log(titleValue);
             fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${titleValue}`)
             .then((response)=>{
                 return response.json();
             })
-            .then((data)=>{
-                // console.log(data,"kkkk");
-    
-            let section = document.getElementById('food_cousing');
-            section.setAttribute('style','display:block');
-    
-            let container= document.createElement('div');
-            container.classList.add('container','food_area');
-            // container.innerHTML="<p d-flex justify-content-center>Here is your list of foods</p>";
-           
-            let row= document.createElement('div');
-            row.classList.add('row');
-
+            .then((data)=>{    
+        
             var div= document.createElement('div');
             div.classList.add('col-12','d-flex','justify-content-center','para');
-            div.innerHTML=`<p>Food for your choice</p>`;
+            div.innerHTML=`<p>Cuisines of ${titleValue} </p>`;
 
-            
             row.appendChild(div);
+
             // Foreach method to iterate all the elements in the array. each element consists objects with key and value
             data['meals'].forEach(obj => {
-           
+            
             var col = document.createElement('div');
+           
             col.classList.add('col-1g-2', 'col-md-3', 'col-12','mb-3', 'd-flex', 'justify-content-center');
+            // col.innerHTML="";
             col.innerHTML=`<div class="card" style="width: 100%; height: 100%;">
                 <img src=${obj.strMealThumb} class="card-img-top" alt="...">
                 <div class="card-body">
@@ -46,12 +38,21 @@
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
               </div>
-        </div> `;
+        </div>`;
+      
         // console.log(col);
+        var row = document.getElementById('row_1');
+        // col.innerHTML="";
         row.appendChild(col);
-        container.appendChild(row);
-        section.appendChild(container);
+        // container.appendChild(row);
+        // section.appendChild(container);
+
             });
+             // To show the modal
+         $('#infoModal_1').modal('show'); 
+         // var infoModal = document.getElementById('infoModal');
+         // infoModal.classList.add('show');
+        // infoModal.style.display = 'block';    
         })
     });
     
@@ -68,10 +69,15 @@ function receipe_fetch()
        async function search_receipe()
        {
          let food= document.getElementById('src_fd').value;
-         console.log(food);
+        //  console.log(food);
          let resp= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${food}`);
          let result= await resp.json();
-        
+         console.log(result);
+        if(result['meals'] === null)
+        {
+          alert(`Sorry could not find food receipe. Plese Try another!
+"Suggestion": check the cuisine in below Food_Type and search`);
+        }
          result['meals'].forEach(ele=>{
             // console.log(ele.strYoutube);
             var col= document.createElement('div');
@@ -97,68 +103,14 @@ function receipe_fetch()
          row.appendChild(col);
          });
          
-         
-
            // To show the modal
-         $('#infoModal').modal('show');
-       
-       // console.log(result);
-       
+         $('#infoModal').modal('show'); 
+// var infoModal = document.getElementById('infoModal');
+// infoModal.classList.add('show');
+// infoModal.style.display = 'block';       
        }
        search_receipe();
 }
 
 
-    // Onclicking the food area div do display the foods in specified area
-
-    // let america = document.getElementById('amer');
-    // let indian = document.getElementById('indi');
-    // let chinese = document.getElementById('chni');
-    // let Egyptian = document.getElementById('egy');
-    // let Filipino = document.getElementById('filip');
-    // let French = document.getElementById('fren');
-    // let Canadian = document.getElementById('cand');
-    // let Italian = document.getElementById('ital');
-    // let Thai = document.getElementById('thai');
-
-//     america.addEventListener('click',()=>{
-//         // return area ="American";
-//         console.log("came");
-//         fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=American`)
-//         .then((response)=>{
-//             return response.json();
-//         })
-//         .then((data)=>{
-//             // console.log(data,"kkkk");
-
-//         let section = document.getElementById('food_cousing');
-//         section.setAttribute('style','display:block');
-
-//         let container= document.createElement('div');
-//         container.classList.add('container','food_area');
-//         // container.innerHTML="<p d-flex justify-content-center>Here is your list of foods</p>";
-       
-//         let row= document.createElement('div');
-//         row.classList.add('row');
-      
-//         // Foreach method to iterate all the elements in the array. each element consists objects with key and value
-//         data['meals'].forEach(obj => {
-       
-//         var col = document.createElement('div');
-//         col.classList.add('col-1g-2', 'col-md-3', 'col-12', 'd-flex', 'justify-content-center');
-//         col.innerHTML=`<div class="card" style="width: 100%; height: 100%;">
-//             <img src=${obj.strMealThumb} class="card-img-top" alt="...">
-//             <div class="card-body">
-//               <h5 class="card-title">${obj.strMeal}</h5>
-//               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-//             </div>
-//           </div>
-//     </div> `;
-//     // console.log(col);
-//     row.appendChild(col);
-//     container.appendChild(row);
-//     section.appendChild(container);
-//         });
-//     })
-// });
-
+  
